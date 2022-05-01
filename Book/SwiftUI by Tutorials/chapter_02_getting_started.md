@@ -1,5 +1,7 @@
 # Chapter2. Getting Started
 
+실습해본것: https://github.com/cozzin/sui-materials/commit/c28f63d5306ecdb8a9970792613eec1b639db74b
+
 ## 이번 챕터에서 배울 것
 - Xcode canvas
 - 재사용가능한 slider 만들기
