@@ -8,18 +8,18 @@ jobs:
     if: contains(github.event.comment.html_url, '/pull/')    # check if the comments come from pull request, exclude those from issue.
     runs-on: [macos-latest]
     steps:
-      - name: deploy
+      - name: Deploy
         if: contains(github.event.comment.body, '/deploy')   # check the comment if it contains the keywords
         run: |
          echo start deploy
-      - name: add deploy comment
+      - name: Add deploy comment
         if: contains(github.event.comment.body, '/deploy')   # check the comment if it contains the keywords
         uses: peter-evans/create-or-update-comment@v2
         with:
           issue-number: github.event.issue.id
           body: |
             Let's start deploy @${{ github.event.head_commit }} 🚀
-      - name: test
+      - name: Test
         if: contains(github.event.comment.body, '/test')  # check the comment if it contains the keywords
         run: |
          echo start test
