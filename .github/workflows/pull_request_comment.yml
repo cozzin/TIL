@@ -1,19 +1,25 @@
 name: Pull request comment
 on:
-  issue_comment:                                     
+  issue_comment:
     types: [created, edited, deleted]
 
 jobs:
- job01:
-   if: contains(github.event.comment.html_url, '/pull/')    # check if the comments come from pull request, exclude those from issue.
-   runs-on: [macos-latest]
-   steps:
-     - name: say hello
-       if: contains(github.event.comment.body, '/deploy')   # check the comment if it contains the keywords
-       run: |
+  pull_request_comment:
+    if: contains(github.event.comment.html_url, '/pull/')    # check if the comments come from pull request, exclude those from issue.
+    runs-on: [macos-latest]
+    steps:
+      - name: deploy
+        if: contains(github.event.comment.body, '/deploy')   # check the comment if it contains the keywords
+        run: |
          echo start deploy
-     - name: test
-       if: contains(github.event.comment.body, '/test')  # check the comment if it contains the keywords
-       run: |
+      - name: add deploy comment
+        needs: deploy
+        uses: peter-evans/peter-evans/commit-comment@v2
+        with:
+          issue-number: github.event.issue.id
+          body: |
+            Let's start deploy @${{ github.event.head_commit }} 🚀
+      - name: test
+        if: contains(github.event.comment.body, '/test')  # check the comment if it contains the keywords
+        run: |
          echo start test
- 
