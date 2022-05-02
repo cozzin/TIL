@@ -12,13 +12,18 @@ jobs:
         if: contains(github.event.comment.body, '/deploy')   # check the comment if it contains the keywords
         run: |
          echo start deploy
-      - name: Add deploy comment
+      - name: Add deploy comment # https://stackoverflow.com/questions/58066966/commenting-a-pull-request-in-a-github-action
         if: contains(github.event.comment.body, '/deploy')   # check the comment if it contains the keywords
-        uses: peter-evans/create-or-update-comment@v2
+        uses: actions/github-script@v5
         with:
-          issue-number: github.event.issue.id
-          body: |
-            Let's start deploy @${{ github.event.head_commit }} 🚀
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🚀'
+            })
       - name: Test
         if: contains(github.event.comment.body, '/test')  # check the comment if it contains the keywords
         run: |
