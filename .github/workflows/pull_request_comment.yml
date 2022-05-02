@@ -13,8 +13,8 @@ jobs:
         run: |
          echo start deploy
       - name: add deploy comment
-        needs: deploy
         if: contains(github.event.comment.body, '/deploy')   # check the comment if it contains the keywords
+        uses: peter-evans/create-or-update-comment@v2
         with:
           issue-number: github.event.issue.id
           body: |
