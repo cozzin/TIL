@@ -70,4 +70,14 @@ $ ls -a
 - `.`: 현재 폴더를 의미함
 - `..`: 상위 폴더를 의미함
 
+## sed 
 
+- [https://jhnyang.tistory.com/137](https://jhnyang.tistory.com/137)
+
+```
+sed -n "1, 2p" old_file > new_file
+echo "${new_body}" >> new_file
+sed -n "3, \$p" old_file >> new_file
+
+cat new_file > old_file
+```

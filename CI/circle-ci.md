@@ -20,3 +20,26 @@
 		};
 /* End XCRemoteSwiftPackageReference section */
 ```
+
+## Artifact 업로드 하기
+
+circle ci snippet 보면 잘 나와있긴한데, 나중에도 헷갈리지 않게 주석으로 설명 추가
+
+```yml
+version: 2
+jobs:
+build:
+  working_directory: /tmp
+  steps:
+    - run:
+        name: Creating Dummy Artifacts
+        command: |
+          echo "my artifact file" > /tmp/art-1;
+          mkdir /tmp/artifacts;
+          echo "my artifact files in a dir" > /tmp/artifacts/art-2; # 1. 파일을 특정 위치에 저장
+    - store_artifacts:
+        path: /tmp/art-1 # 폴더 위치
+        destination: artifact-file # 결과물 이름
+    - store_artifacts:
+        path: /tmp/artifacts
+```
