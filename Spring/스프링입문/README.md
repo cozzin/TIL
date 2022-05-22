@@ -16,6 +16,10 @@
 - Cmd + Shift + T: 해당 클래스에 매칭되는 테스트 클래스 만들기
 ![](images/2022-05-21-12-06-22.png)
 
+## 사소한 문제 해결
+
+- [인텔리제이 Run 실행 안 될 때 해결 방법](https://ottl-seo.tistory.com/entry/%EC%9D%B8%ED%85%94%EB%A6%AC%EC%A0%9C%EC%9D%B4-Run-%EC%8B%A4%ED%96%89-%EC%95%88-%EB%90%A0-%EB%95%8C-%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95)
+
 ## 라이브러리 살펴보기
 
 - spring-boot-starter-web
@@ -105,3 +109,68 @@ class MemberServiceTest {
     }
 }
 ```
+
+## 스프링 빈과 의존관계
+
+![](images/2022-05-22-16-17-05.png)
+
+- `@Controller` 이런 스프링 관련 annotation이 붙어있으면, 스프링이 어떤 곳에 객체를 생성해서 관리함
+- 이런걸 Bean Pattern이라고 함
+
+```java
+@Controller
+public class MemberController {
+    
+    private final MemberService memberService = new MemberService();
+}
+```
+
+- 이런식으로 바로 Controller에서 생성해주면 객체마다 Service를 생성하게 됨
+- 그런데 service를 중복으로 생성할 필요 없는 경우에는 Spring Container에 등록해두고 가져오면 됨
+
+### @Autowired
+
+- Spring이 객체를 생성할 때 constructor를 호출할 텐데, 그때 `@Autowired`가 붙어있으면 파라미터를 Container에서 생성해서 주입해줌
+- 예제에서는 Controller -> Service -> Repository 로 의존하고 있음
+
+```java
+@Controller
+public class MemberController {
+
+    private final MemberService memberService;
+    
+    @Autowired
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
+    }
+}
+```
+
+```java
+@Service
+public class MemberService {
+
+    private final MemberRepository memberRepository;
+
+    @Autowired
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+}
+```
+
+```java
+@Repository
+public class MemoryMemberRepository implements MemberRepository
+```
+
+
+### 스프링 빈을 등록하는 2가지 방법
+1. 컴포넌트 스캔과 자동 의존관계 설정
+2. 자바 코드로 직접 스프링 빈 등록하기
+
+### 컴포넌트 스캔과 자동 의존관계 설정
+
+- `@Component` annotation이 있으면 스프링 빈으로 자동 등록됨
+- `@Controller`, `@Service`, `@Repository` 안에 까보면 `@Component`라고 되어 있음
+- 스프링 빈을 등록할 때 기본으로 싱글톤으로 등록. 설정으로 싱글톤이 아니게 할 수 있음. 특별한 경우가 아니면 싱글톤 사용
