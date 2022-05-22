@@ -86,3 +86,22 @@ import static org.assertj.core.api.Assertions.*;
 
 option + enter 해보면 static import로 변경해주는 항목이 뜸
 
+### Dependency Injection
+
+- Service가 Repository 객체를 의존하고 있는데 의존 관계를 드러나게 하고, 
+테스트 환경에 따라 Repository를 교체해주기 위해서는 의존성 주입이 필요하다.
+- cmd + n > constructor 사용하면 init으로 객체를 주입받을 수 있도록 IDE가 금방 만들어준다
+
+```java
+class MemberServiceTest {
+
+    MemberService memberService;
+    MemoryMemberRepository memberRepository;
+
+    @BeforeEach
+    public void beforeEach() {
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService(memberRepository); // Dependency Injection
+    }
+}
+```
