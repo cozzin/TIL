@@ -13,6 +13,8 @@
 ![](images/2022-05-21-11-47-44.png) 
 - Control + T: 리팩토링 관련된 여러 기능 선택할 수 있음
 ![](images/2022-05-21-11-52-32.png) 
+- Cmd + Shift + T: 해당 클래스에 매칭되는 테스트 클래스 만들기
+![](images/2022-05-21-12-06-22.png)
 
 ## 라이브러리 살펴보기
 
@@ -79,3 +81,8 @@ import static org.assertj.core.api.Assertions.*;
 ```
 
 이런식으로 import static 해두면 사용하는 곳에서 패키지 지정없이 바로 쓸 수 있음
+
+![](images/2022-05-21-23-47-41.png)
+
+option + enter 해보면 static import로 변경해주는 항목이 뜸
+
