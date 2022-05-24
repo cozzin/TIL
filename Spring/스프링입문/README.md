@@ -174,3 +174,11 @@ public class MemoryMemberRepository implements MemberRepository
 - `@Component` annotation이 있으면 스프링 빈으로 자동 등록됨
 - `@Controller`, `@Service`, `@Repository` 안에 까보면 `@Component`라고 되어 있음
 - 스프링 빈을 등록할 때 기본으로 싱글톤으로 등록. 설정으로 싱글톤이 아니게 할 수 있음. 특별한 경우가 아니면 싱글톤 사용
+
+### 의존성 주입
+
+- 생성자 주입
+- 필드 주입
+- setter 주입
+
+생성자 주입이 제일 좋음! 의존 관계가 실행중에 동적으로 변경되는 경우가 거의 없음
