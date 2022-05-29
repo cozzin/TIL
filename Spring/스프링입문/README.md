@@ -221,3 +221,19 @@ insert into member(name) values('spring1');
 영한님은 sql을 파일로 추가해두는 편이라고 하심. 이렇게 하면 git으로 관리되어서 나중에 파악하기에 좋음
 
 ![](images/2022-05-27-23-51-49.png)
+
+### 순수 JDBC
+
+#### org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException 에러
+- `org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-200]` 에러가 뜨는데
+[https://www.inflearn.com/questions/94189](https://www.inflearn.com/questions/94189) 여기보면 안내가 나와있음
+- 스프링부트 2.4부터는 `spring.datasource.username=sa`를 꼭 추가해주어야 한다. 그렇지 않으면 `Wrong user name or password` 오류가 발생한다.
+- 이걸 application.properties 에 추가하기
+
+#### 개방-폐쇄 원칙
+
+![](images/2022-05-29-16-56-50.png)
+
+- OCP 확장에는 열려있고, 변경에는 닫혀있다.
+- 다형성 개념을 활용해서 기능을 완전히 변경해도, 애플리케이션 코드를 수정하지 않아도 됨
+- Memeory -> JDBC Repository 변경했지만 다른 부분은 수정하지 않았음
