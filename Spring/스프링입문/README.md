@@ -247,3 +247,17 @@ insert into member(name) values('spring1');
 
 - 통합테스트: DB까지 연동해서 테스트
 - 단위테스트: 스프링 컨테이너 없이 최소 단위로 테스트. 이걸 잘만들어두는게 좋음!
+
+### 스프링 JdbcTemplate
+- 앞선 순수 JDBC에서 반복적으로 수행하던 작업을 간단하게 처리해줌
+- sql은 여전히 작성해야 함
+
+### JPA
+
+application.properties
+
+```
+spring.jpa.show-sql=true # jpa가 날리는 sql을 볼 수 있음
+spring.jpa.hibernate.ddl-auto=none # jpa를 사용하면 객체를 보고 테이블도 만들어주는데, 지금은 테이블 만들어져 있는 상태라서 none으로 설정함
+```
+
