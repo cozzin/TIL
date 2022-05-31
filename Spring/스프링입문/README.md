@@ -312,3 +312,37 @@ public List<Member> findMembers() {
 
 > 핵심 로직보다 다른 로직들이 더 많은 경우, 코드 전반에 퍼져 있는 것이 많은데 잘 참고해봐야 겠다
 
+## AOP 적용
+
+- AOP: Aspect Oriented Programming
+- 공통 관심 사항(cross-cutting concern) / 핵심 관심 사항(core concern) 분리
+
+![](images/2022-05-31-22-56-45.png)
+
+와...... 그냥 원하는 곳에 지정만 해주면 됨...
+
+```java
+@Aspect // AOP 사용
+@Component // Bean에 등록
+public class TimeTraceAop {
+
+    @Around("execution(* hello.hellospring..*(..))") // AOP 적용할 타겟 지정
+    public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
+        long start = System.currentTimeMillis();
+        System.out.println("START: " + joinPoint.toString());
+        try {
+            return joinPoint.proceed();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("END: " + joinPoint.toString() + " " + timeMs + "ms");
+        }
+    }
+}
+```
+
+- 중간에 프록시 객체를 둬서 이런일이 가능하게 함
+- 가짜 spring bean 을 먼저 호출해줌
+
+![](images/2022-05-31-23-12-42.png)
+
