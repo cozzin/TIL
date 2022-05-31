@@ -261,3 +261,54 @@ spring.jpa.show-sql=true # jpa가 날리는 sql을 볼 수 있음
 spring.jpa.hibernate.ddl-auto=none # jpa를 사용하면 객체를 보고 테이블도 만들어주는데, 지금은 테이블 만들어져 있는 상태라서 none으로 설정함
 ```
 
+### 스프링 데이터 JPA
+
+- JPA를 먼저 배우고 스프링 데이터 JPA를 배워야 함
+- 인터페이스만으로 마법처럼 구현가능
+
+이것만 만들면 끝이라고...?!
+
+```java
+public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Long>, MemberRepository {
+
+    @Override
+    Optional<Member> findByName(String name);
+}
+```
+
+- Spring DATA JPA가 JpaRepository를 구현하고 있는 클래스를 Spring에 알아서 등록해줌 (프록시라는 기술이 있다고 함)
+- (내생각) 불편한 것들을 자동으로 해준다는 점에서 좋지만, 의존 관계가 생략되고 어떤 곳에서 제어하는지 확인하기 어려운게 아쉽다
+
+![](images/2022-05-29-23-52-49.png)
+- method 네이밍에 따라서 sql을 작성할 수 있음 (리플렉션)
+- 단순한 작업은 인터페이스만으로 개발이 끝나는 효과가 있음
+
+## AOP
+
+### AOP가 필요한 상황
+
+- 모든 메소드의 호출 시간을 측정하고 싶다면? 
+- 공통 관심 사항(cross-cutting concern) vs 핵심 관심 사항(core concern)
+
+이런식으로 시간 측정 로직을 넣을 수는 있음
+
+```java
+public List<Member> findMembers() {
+    long start = System.currentTimeMillis();
+
+    try {
+        return memberRepository.findAll();
+    } finally {
+        long finish = System.currentTimeMillis();
+        long timeMs = finish - start;
+        System.out.println("findMembers = " + timeMs + "ms");
+    }
+}
+```
+
+- 하지만 시간 측정 기능은 기존 기능의 핵심 부분은 아님
+- 시간 측정 들어감으로 유지보수가 어려우짐;;
+- 시간 측정 로직을 변경할 때 모든 로직을 찾아가면서 변경해야 한다...
+
+> 핵심 로직보다 다른 로직들이 더 많은 경우, 코드 전반에 퍼져 있는 것이 많은데 잘 참고해봐야 겠다
+
