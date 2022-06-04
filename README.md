@@ -4,7 +4,10 @@ Today I Learned
 ## 개발서적
 
 - [생각하는 프로그래밍](Book/생각하는%20프로그래밍)
-- [Kotlin in Action](Book/kotlin_in_action)
+
+## Kotlin
+
+- [Kotlin in Action](Kotlin/kotlin_in_action)
 
 ## Server
 

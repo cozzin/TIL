@@ -1,5 +1,3 @@
-# Kotlin
-
 # 1. 코틀린이란 무엇이며, 왜 필요한가?
 
 ## 1. 코틀린 맛보기
@@ -109,4 +107,3 @@ if (value is String)
 ### 1.5.5 온라인 놀이터
 
 [http://try.kotl.in/](http://try.kotl.in/)
-
