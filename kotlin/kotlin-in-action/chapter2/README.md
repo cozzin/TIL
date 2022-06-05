@@ -91,3 +91,102 @@ fun max(a: Int, b: Int) = if (a>b) a else b
 - 그런데 아무리 `val`로 되어 있어도 레퍼런스 타입을 가리키는거면 클래스 내부는 당연히 변경 가능.
 - 기본적으로는 `val` 사용해서 불변으로 사용하고, 필요할 때 `var`로 변경하는 것 추천. 이건 Swift에서도 비슷한 개념이었다.
 
+### 2.1.4 더 쉽게 문자열 형식 지정: 문자열 템플릿
+
+```kt
+"Hello, $name"
+"Hello, ${args[0]}"
+"${args[0]}님 반가워요"
+"$name 반가워요 ${if (true) "정말로" else "아니야사실"}" // hi 반가워요 정말로
+```
+
+## 2.2 클래스와 프로퍼티
+
+Java Bean 클래스
+
+```java
+public class Person {
+    private final String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+```
+
+코틀린으로 표현하면 이렇게 간단함!!
+
+```kt
+class Person(val name: String)
+```
+
+- 코틀린의 기본 가시성은 public, 변경자를 생략해도 됨
+
+### 2.2.1 프로퍼티
+
+- 프로퍼티 = 필드 + 접근자
+
+```kt
+class Person (
+    val name: String, // read-only. (private) field. (public) getter
+    var isMarried: Boolean // read-write. (private) field. (public) getter. (public) setter
+)
+```
+
+```kt
+val person = Person("Bob", true)
+println(person.name) // Bob
+println(person.isMarried) // true
+```
+
+#### 코틀린 클래스를 자바에서 쓸 때
+
+- getter에는 get이 붙지 않음 => `isMarried`
+- setter에는 is를 set으로 바꾼 이름을 사용 => `setMarried` 
+
+#### 자바 클래스를 코틀린에서 쓸 때
+
+- (java) `setName`, `getName` => (kotlin) `name`
+- (java) `isMarried`, `setMarrid` => (kotlin) `isMarried`
+
+### 2.2.2 커스텀 접근자
+
+이것만 봤을 때는 그다지 간결해보이지는 않는다...
+
+```kt
+class Rectangle(val height: Int, val width: Int) {
+    val isSquare: Boolean
+        get() {
+            return height == width
+        }
+}
+```
+이렇게 할수도 있다고 한다! 한결 낫다
+
+```kt
+val isSquare: Boolean
+    get() = height == width
+```
+
+재미로 해봤는데, 코드 블럭 one line으로 표현은 안된다
+
+```kt
+val isSquare: Boolean
+    get() { height == width }
+```
+
+> 일반적으로 클래스의 특성(프로퍼티에는 특서잉라는 뜻이 있다)을 정의하고 싶다면 프로퍼티로 그 특성을 정의해야 한다. (p.74)
+
+이게 재밌는 부분이었는데 computed property로 해도 되고 파라미터가 없는 함수를 만들어도 상관 없는 경우가 있다. 예를 들어 위의 프로퍼티를 아래와 같이 만들어도 성능 차이는 없다.
+하지만 클래스의 속성이면 프로퍼티를 쓰라고 저자는 제안한다. 클래스 설계할 때 한번 고민해봐도 좋을 듯 하다.
+
+```kt
+fun isSquare(): Boolean = height == width
+```
+
+### 2.2.3 코틀린 소스코드 구조: 디렉터리와 패키지
+
