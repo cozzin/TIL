@@ -176,7 +176,7 @@ val isSquare: Boolean
 
 ```kt
 val isSquare: Boolean
-    get() { height == width }
+    get() { height == width } // ❌ 컴파일 에러
 ```
 
 > 일반적으로 클래스의 특성(프로퍼티에는 특서잉라는 뜻이 있다)을 정의하고 싶다면 프로퍼티로 그 특성을 정의해야 한다. (p.74)
