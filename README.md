@@ -7,7 +7,7 @@ Today I Learned
 
 ## Kotlin
 
-- [Kotlin in Action](Kotlin/kotlin_in_action)
+- [Kotlin in Action](kotlin/kotlin-in-action)
 
 ## Server
 
