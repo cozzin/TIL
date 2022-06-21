@@ -39,7 +39,7 @@
 - PORT: 같은 IP 안에서 동작하는 애플리케이션 구분하기 위함
 - DNS: IP는 변하기 쉽고 기억하기 어려워서 DNS에 등록해두고 사용함
 
-## URI(Uniform Resource Identifier)
+## 🔗 URI(Uniform Resource Identifier)
 
 - "URI는 로케이터(**L**ocator), 이름(**N**ame) 또는 둘 다 추가로 분류될 수 있다" ([참고](https://www.ietf.org/rfc/rfc3986.txt))
 - <img width="715" alt="image" src="https://user-images.githubusercontent.com/11647461/174804560-9180f96e-a2b5-448b-82e5-8eac90df26c7.png">
@@ -57,3 +57,61 @@
 ### URL, URN 단어 뜻
 - URL - Locator: 리소스가 있는 위치를 지정
 - URN - Name: 리소스에 이름을 부여
+  - 위치는 변할 수 있지만, 이름은 변하지 않는다
+  - ex) urn:isbn:123213123 
+  - URN 이름만으로 실제 리소스를 찾을 수 있는 방법이 보편화 되지 않음
+  - 예전에 시도했는데 잘 안됐다고 함
+  - 강의에서는 앞으로 URI를 URL과 같은 의미로 이야기함
+
+### URL 분석
+
+```
+https://www.google.com/search?q=hello&hl=ko
+```
+
+### URL 전체 문법
+
+- `scheme://[userinfo@]host[:port][/path][?query][#fragment]`
+- `https://www.google.com/search?q=hello&hl=ko`
+
+### scheme
+
+- 주로 프로토콜 사용
+- 프로토콜: 어떤 방식으로 자원에 접근할 것인가 하는 약속 규칙
+  - http, https, ftp 등등
+- http는 80포트, https는 443 포트를 주로 사용, 포트는 생략 가능. 생략하면 주로 사용되는 포트 사용함
+  - https는 http에 보안 추가 (HTTP Secure)
+
+### userinfo
+
+- URL에 사용자 정보를 포함해서 인증
+- 거의 사용하지 않음
+
+### host
+
+- 호스트명
+- 도메인명 또는 IP 주소를 직접 사용 가능
+
+### port
+
+- 접속 포트
+- 생략 가능
+
+### path
+
+- 리소스 경로
+- 계층적 구조
+- `/home/file1.jpg`
+- `/members`
+- `/members/100`: 100 id를 가진 회원 정보 조회 하는 식으로 설계할 수 있음
+
+### query
+
+- key=value 형태
+- `?`로 시작, `&`로 추가 가능
+- query parameter, query string 등으로 불림.
+
+### fragment
+
+- html 내부 북마크 등에 사용
+- 서버에 전송하는 정보는 아님
