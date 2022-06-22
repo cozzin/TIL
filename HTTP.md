@@ -115,3 +115,49 @@ https://www.google.com/search?q=hello&hl=ko
 
 - html 내부 북마크 등에 사용
 - 서버에 전송하는 정보는 아님
+
+## 웹 브라우저 요청 흐름
+
+### HTTP 요청 메세지 생성
+
+- 일단 DNS 조회, port 정보 확인
+
+```
+GET /serach?q=hello&hl=ko HTTP/1.1
+Host: www.google.com
+```
+
+### HTTP 메세지 전송
+
+1. 웹 브라우저가 HTTP 메시지 생성
+2. SOCKET 라이브러리 통해 전달
+3. TCP/IP 패킷 생성, HTTP 메시지 포함
+4. 인터넷 통해서 서버로 흘러감
+
+### 패킷 생성
+
+- 출발지 IP, PORT
+- 목적지 IP, PORT
+- 전송 데이터
+  ```
+  GET /serach?q=hello&hl=ko HTTP/1.1
+  Host: www.google.com
+  ```
+
+### 요청 패킷 도착!
+
+- HTTP 메세지를 파악
+- HTTP 응답 메세지 생성
+  ```
+  HTTP/1.1 200 OK
+  Content-Type: text/html;charset=UTF-8
+  Content-Length: 3423
+
+  <html>
+    <body>...</body>
+  </html>
+  ```
+
+### 응답 패킷 도착
+
+- 웹 브라우저 HTML 렌더링
