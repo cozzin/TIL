@@ -29,3 +29,43 @@ int codePoint = str.codePointAt(str.offsetByCodePoints(0, i));
 // 코드 포인트의 총 수
 int length = str.codePointCount(0, str.length());
 ```
+
+### 1.6.2 포맷 적용 출력
+
+- % 문자로 시작하는 포맷 지정자(format specifer)는 각각에 대응하는 인수로 교체된다
+- %f: 부동소수점 (%8.2f: 소수점 위 8자리, 소수점 아래 2자리)
+- %s: 문자열
+- %d: 10진 정수
+
+## 1.7 제어 흐름
+
+case 문에서 break 빠뜨린거 검사할 수 있음.
+이 린트 검사 피하고 싶으면 메서드에 `@SupressWarnings("fallthrough")` 붙이면 됨
+
+```sh
+javac -Xlint:fallthrought mypackage/MainClass.java
+```
+
+## 1.8 배열과 배열 리스트
+
+- 배열도 클래스라서 new로 생성
+
+### 1.8.2 배열 생성
+
+new 연산자로 배열 선언하면 기본값으로 채움
+
+- 숫자 타입(char 포함): 0으로 채움
+- boolean: false로 채움
+- 객체: null 참조로 채움
+
+### 1.8.3 ArrayList
+
+- 가변 Array
+
+```java
+friends = new ArrayList<>(); // 제네릭을 타입 추론해서 쓸때. 다이아몬드 문법(diamond syntax)라고 부름
+```
+
+```java
+friends = new ArrayList<String>();
+```
