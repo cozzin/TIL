@@ -121,17 +121,18 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
     "width": 300
   },
-  "active": "5886db83e1082fd0",
+  "active": "d629272698fd1166",
   "lastOpenFiles": [
     "Spring/Singleton Registry.md",
-    "Coding Interview.md",
     "Book/토비의 스프링/1장 오브젝트와 의존관계.md",
+    "Coding Interview.md",
     "Book/core-java-9/ch01.md",
     "Book/core-java-9/ch01-exercise.md",
     "README.md",
