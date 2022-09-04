@@ -10,7 +10,7 @@
 
 ## Getting started
 - `UIKit/RGBullsEye` 시뮬에서 돌려보기
-- ![](images/2022-04-30-18-08-36.png)
+- ![](2022-04-30-18-08-36.png)
 
 ## Exploring the SwiftUI starter project
 - `SwiftUI/RGBullsEye`
@@ -51,7 +51,7 @@ struct ContentView_Previews : PreviewProvider {
 }
 ```
 
-- ![](images/2022-04-30-18-23-39.png)
+- ![](2022-04-30-18-23-39.png)
 - Canvas: Option-Command-enter
 - Resume: Option-Command-P
 
@@ -66,7 +66,7 @@ struct ContentView_Previews : PreviewProvider {
 - Canvas and Minimap
 - Modifiers: 변경을 위해서 UIKit처럼 property 세팅하는게 아니라 이걸 사용함.
 - Container views: `HStack`, `VStack`, `ZStack`, `Group` 
-![](images/2022-04-30-18-34-45.png)
+![](2022-04-30-18-34-45.png)
 우측 상단 + 버튼 눌러서 Library 보면, 이것저것 View를 볼 수 있음 (단축키: Command-Shift-L)
 
 ## Creating the target color view
@@ -116,7 +116,7 @@ HStack {
 func padding(_ edges: Edge.Set = .all, _ length: CGFloat? = nil) -> some View
 ```
 
-![](images/2022-04-30-18-51-36.png)
+![](2022-04-30-18-51-36.png)
 
 ```swift
 Slider(value: $guess.red)
@@ -174,7 +174,7 @@ Circle()
 
 - Command-Click > Extract Subview
 
-![](images/2022-04-30-19-14-50.png)
+![](2022-04-30-19-14-50.png)
 
 이런식으로 뽑아서 쓸 수 있음!
 

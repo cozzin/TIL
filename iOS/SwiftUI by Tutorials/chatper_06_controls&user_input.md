@@ -24,7 +24,7 @@ TextField("Type your name...", text: $name)
 
 iOS에 기본 제공되는 스타일은 결국 2개 밖에 없는 것 같음
 
-![](images/2022-05-22-20-13-11.png)
+![](2022-05-22-20-13-11.png)
 
 ### 커스텀하게 스타일 적용할 방법 
 
@@ -257,7 +257,7 @@ func registerUser() {
 
 ### Slider
 
-![](images/2022-05-22-22-31-47.png)
+![](2022-05-22-22-31-47.png)
 
 ```swift
 public init<V>(
@@ -270,7 +270,7 @@ public init<V>(
 
 ### Stepper
 
-![](images/2022-05-22-22-31-54.png)
+![](2022-05-22-22-31-54.png)
 
 ```swift
 public init<S, V>(
@@ -284,7 +284,7 @@ public init<S, V>(
 
 ### SecureField
 
-![](images/2022-05-22-22-31-58.png)
+![](2022-05-22-22-31-58.png)
 
 ## Key points
 

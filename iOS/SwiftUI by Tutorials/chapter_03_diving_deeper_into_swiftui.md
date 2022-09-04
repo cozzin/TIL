@@ -4,7 +4,7 @@
 
 ## Neumorphism
 - highlights and shadows로 입체감 표현하는것
-![](images/2022-05-01-14-38-26.png)
+![](2022-05-01-14-38-26.png)
 https://hype4.academy/articles/design/neumorphism-in-user-interfaces
 
 ## Colors for neumorphism
@@ -45,7 +45,7 @@ ZStack { // Z축 방향으로 element를 배치함
 
 | Color.element | Color.element.ignoresSafeArea() |
 | - | - |
-| ![](images/2022-05-01-15-31-17.png) | ![](images/2022-05-01-15-32-13.png) |
+| ![](2022-05-01-15-31-17.png) | ![](2022-05-01-15-32-13.png) |
 
 > Note: ZStack에 ignoresSafeArea() 적용하면, content view들도 SafeArea 무시하게 됨
 
@@ -67,7 +67,7 @@ ZStack {
 }
 ```
 
-![](images/2022-05-01-15-48-45.png)
+![](2022-05-01-15-48-45.png)
 
 ## Order of modifiers
 
@@ -92,7 +92,7 @@ Text(guess.intString)
 .background(Capsule()) // 좌우 Corner인 직사각형 모양. 색깔은 까만색
 ```
 
-![](images/2022-05-01-15-58-49.png)
+![](2022-05-01-15-58-49.png)
 
 ```swift
 .background(
@@ -102,7 +102,7 @@ Text(guess.intString)
 )
 ```
 
-![](images/2022-05-01-16-00-03.png)
+![](2022-05-01-16-00-03.png)
 
 ## Creating a custom button style
 
@@ -158,7 +158,7 @@ struct NeuButtonStyle: ButtonStyle {
 )
 ```
 
-![](images/2022-05-01-17-37-06.png)
+![](2022-05-01-17-37-06.png)
 
 preview 사이즈 세팅
 
@@ -169,7 +169,7 @@ preview 사이즈 세팅
 
 ## “Debugging” dark mode
 
-![](images/2022-05-01-17-40-37.png)
+![](2022-05-01-17-40-37.png)
 
 전체 앱을 다크모드로 적용하려면 시뮬에서 띄워야 함: Appearance ▸ Dark
 
@@ -207,7 +207,7 @@ GeometryReader { proxy in
 
 ## Previewing different devices
 
-![](images/2022-05-01-17-52-08.png)
+![](2022-05-01-17-52-08.png)
 
 - 맨 오른쪽 버튼 누르면 Preview 복제해줌
 - 다른 Device, 다른 크기, 다른 color Scheme 등으로 테스트 해보기 좋을 듯
